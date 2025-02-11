@@ -1,0 +1,13 @@
+<seg:aseguradora xmlns:seg="http://www.unican.es/ss/Seguros2425">
+  <!--Zero or more repetitions:-->
+  <seg:cliente nombre="string" email="string" dni="string">
+    <!--1 or more repetitions:-->
+    <seg:seguro id="string" fecha="2015-03-21+01:00">
+      <seg:vehiculo matricula="string" cv="100" esProfesional="false"/>
+    </seg:seguro>
+    <!--Zero or more repetitions:-->
+    <seg:parte importe="1.051732E7" fecha="2018-01-30+01:00" id="3">
+      <seg:seguroRef>string</seg:seguroRef>
+    </seg:parte>
+  </seg:cliente>
+</seg:aseguradora>
