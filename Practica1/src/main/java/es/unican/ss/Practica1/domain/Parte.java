@@ -10,9 +10,10 @@ import es.unican.ss.Practica1.jsonUtils.CustomLocalDateDeserializer;
 import es.unican.ss.Practica1.jsonUtils.CustomLocalDateSerializer;
 
 @SuppressWarnings({ "serial" })
-@JsonPropertyOrder({"seguro","importe","fecha","idParte"})
-@JsonIdentityInfo( generator= ObjectIdGenerators.PropertyGenerator.class, property= "idParte")
+@JsonPropertyOrder({"seguro","importe","fecha","id"})
+@JsonIdentityInfo( generator= ObjectIdGenerators.PropertyGenerator.class, property= "id")
 public class Parte implements Serializable {
+	@JsonProperty("id")
 	private Integer idParte;
 
 	private Seguro seguro;

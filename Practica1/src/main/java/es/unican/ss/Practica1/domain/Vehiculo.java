@@ -1,5 +1,7 @@
 package es.unican.ss.Practica1.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 
 @SuppressWarnings({ "serial" })
@@ -7,6 +9,7 @@ public class Vehiculo implements Serializable{
 		
 	private String matricula;
 	private int cv;
+	@JsonProperty("profesional")
 	private boolean esProfesional;
 	
 	public Vehiculo(String mat, int cv, boolean esPro){

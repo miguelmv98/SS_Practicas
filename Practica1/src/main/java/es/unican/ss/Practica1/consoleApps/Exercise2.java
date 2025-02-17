@@ -12,7 +12,7 @@ public class Exercise2 {
         ObjectMapper mapper = new ObjectMapper();
         Aseguradora aseguradora;
         try {
-            aseguradora = mapper.readValue(new File(this.getClass().getClassLoader().getResource("segurosUc.json")), Aseguradora.class);
+            aseguradora = mapper.readValue(new File("src/main/resources/segurosUC.json"), Aseguradora.class);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -20,6 +20,14 @@ public class Exercise2 {
             System.out.println("Cliente: " + c.getDni()+ " | " + c.getNombre());
             System.out.println("Precio seguiros: "+c.totalSeguros());
             System.out.println("-----------------------------------------");
+        }
+
+        aseguradora.getClientes().add(GeneradorCliente.GenerarCliente());
+
+        try {
+            mapper.writeValue(new File("src/main/resources/newSegurosUC.json"),aseguradora);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }

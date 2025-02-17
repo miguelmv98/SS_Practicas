@@ -1,13 +1,29 @@
-<seg:aseguradora xmlns:seg="http://www.unican.es/ss/Seguros2425">
+<?xml version="1.0" encoding="UTF-8" ?>
+<seg:aseguradora
+        xmlns:seg="http://www.unican.es/ss/Seguros2425"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
   <!--Zero or more repetitions:-->
-  <seg:cliente nombre="string" email="string" dni="string">
+  <seg:cliente nombre="Juan Ortega" email="juan@correo.com" dni="12345679X">
     <!--1 or more repetitions:-->
-    <seg:seguro id="string" fecha="2015-03-21+01:00">
-      <seg:vehiculo matricula="string" cv="100" esProfesional="false"/>
+    <seg:seguro xsi:type="seg:TRFranquicia" id="AAA-123456" fecha="2001-12-31+01:00" franquicia="100">
+      <seg:vehiculo matricula="PLL9597" cv="75" esProfesional="false"/>
+    </seg:seguro>
+  </seg:cliente>
+  <seg:cliente nombre="Pablo Prieto" email="pablo@correo.com" dni="12345679F">
+    <!--1 or more repetitions:-->
+    <seg:seguro xsi:type="seg:TodoRiesgo" id="BBB-123456" fecha="2020-09-01+01:00">
+      <seg:vehiculo matricula="PLX9597" cv="105" esProfesional="true"/>
+    </seg:seguro>
+    <seg:seguro xsi:type="seg:Terceros" id="CCC-123456" fecha="2022-07-15+01:00">
+      <seg:vehiculo matricula="PLX9797" cv="60" esProfesional="false"/>
     </seg:seguro>
     <!--Zero or more repetitions:-->
-    <seg:parte importe="1.051732E7" fecha="2018-01-30+01:00" id="3">
-      <seg:seguroRef>string</seg:seguroRef>
+    <seg:parte importe="350" fecha="2021-12-31+01:00" id="1">
+      <seg:seguroRef>BBB-123456</seg:seguroRef>
+    </seg:parte>
+    <seg:parte importe="250" fecha="2018-01-30+01:00" id="2">
+      <seg:seguroRef>CCC-123456</seg:seguroRef>
     </seg:parte>
   </seg:cliente>
 </seg:aseguradora>
