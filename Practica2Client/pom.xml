@@ -5,9 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>es.unican.ss</groupId>
-    <artifactId>Practica2</artifactId>
+    <artifactId>Practica2Client</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -39,10 +38,9 @@
                 <artifactId>jaxws-maven-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
-                    <genJWS>true</genJWS>
                     <packageName>es.unican.ss.volumenArea</packageName>
                     <sourceDestDir>src/main/java/</sourceDestDir>
-                    <wsdlDirectory>src/main/webapp/WEB-INF/wsdl</wsdlDirectory>
+                    <wsdlUrls>http://localhost:8080/Practica2-1.0-SNAPSHOT?wsdl</wsdlUrls>
                 </configuration>
             </plugin>
         </plugins>

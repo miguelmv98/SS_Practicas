@@ -17,7 +17,7 @@ import jakarta.xml.ws.WebServiceFeature;
  * Generated source version: 3.0
  * 
  */
-@WebServiceClient(name = "VolumenArea", targetNamespace = "http://www.unican.es/ss/VolumenArea/", wsdlLocation = "file:/c:/SS_Practicas/Practica2/src/main/resources/VolumenArea.wsdl")
+@WebServiceClient(name = "VolumenArea", targetNamespace = "http://www.unican.es/ss/VolumenArea/", wsdlLocation = "http://localhost:8080/Practica2-1.0-SNAPSHOT?wsdl")
 public class VolumenArea
     extends Service
 {
@@ -30,7 +30,7 @@ public class VolumenArea
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("file:/c:/SS_Practicas/Practica2/src/main/resources/VolumenArea.wsdl");
+            url = new URL("http://localhost:8080/Practica2-1.0-SNAPSHOT?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

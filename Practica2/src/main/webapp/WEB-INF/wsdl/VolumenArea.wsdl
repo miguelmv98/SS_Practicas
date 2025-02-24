@@ -43,7 +43,7 @@
 		<wsdl:part name="error" element="types:datosNoValidos" />
 	</wsdl:message>
 	
-	<wsdl:portType name="VolumenArea">
+	<wsdl:portType name="VolumenAreaInterface">
 		<wsdl:operation name="area">
 			<wsdl:documentation>Retorna el area del objeto dado</wsdl:documentation>
 			<wsdl:input message="tns:AreaRequestMsg" />
