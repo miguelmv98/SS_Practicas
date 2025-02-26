@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<aseguradora xmlns="http://www.unican.es/ss/Seguros2425">
+    <cliente dni="12345679X" nombre="Juan Ortega" email="juan@correo.com">
+        <seguro xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="TRFranquicia" franquicia="100.0"
+                id="AAA-123456" fecha="2001-12-31">
+            <vehiculo matricula="PLL9597" cv="75" esProfesional="false"/>
+            <precioBase>400.0</precioBase>
+        </seguro>
+    </cliente>
+    <cliente dni="12345679F" nombre="Pablo Prieto" email="pablo@correo.com">
+        <seguro xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="TodoRiesgo" id="BBB-123456"
+                fecha="2020-09-01">
+            <vehiculo matricula="PLX9597" cv="105" esProfesional="true"/>
+            <precioBase>600.0</precioBase>
+        </seguro>
+        <seguro xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Terceros" id="CCC-123456"
+                fecha="2022-07-15">
+            <vehiculo matricula="PLX9797" cv="60" esProfesional="false"/>
+            <precioBase>200.0</precioBase>
+        </seguro>
+        <parte id="1" importe="350.0" fecha="2021-12-31">
+            <seguroRef>BBB-123456</seguroRef>
+        </parte>
+        <parte id="2" importe="250.0" fecha="2018-01-30">
+            <seguroRef>CCC-123456</seguroRef>
+        </parte>
+    </cliente>
+    <cliente dni="123456789A" nombre="Miguel Monje" email="miguelmonje@gmail.com">
+        <seguro xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Terceros" id="AAA-135153"
+                fecha="2025-02-24">
+            <vehiculo matricula="ABC1234" cv="95" esProfesional="false"/>
+            <precioBase>200.0</precioBase>
+        </seguro>
+        <seguro xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="TodoRiesgo" id="XSD-423401"
+                fecha="2025-02-24">
+            <vehiculo matricula="XSD4234" cv="105" esProfesional="true"/>
+            <precioBase>600.0</precioBase>
+        </seguro>
+        <parte id="100" importe="90.0" fecha="2025-02-24">
+            <seguroRef>AAA-135153</seguroRef>
+        </parte>
+    </cliente>
+</aseguradora>
