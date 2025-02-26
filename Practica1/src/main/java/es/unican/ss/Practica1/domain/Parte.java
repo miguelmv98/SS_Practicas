@@ -8,18 +8,29 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import es.unican.ss.Practica1.jsonUtils.CustomLocalDateDeserializer;
 import es.unican.ss.Practica1.jsonUtils.CustomLocalDateSerializer;
+import es.unican.ss.Practica1.xmlUtils.LocalDateAdapterXML;
+
+import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @SuppressWarnings({ "serial" })
 @JsonPropertyOrder({"seguro","importe","fecha","id"})
 @JsonIdentityInfo( generator= ObjectIdGenerators.PropertyGenerator.class, property= "id")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType
 public class Parte implements Serializable {
 	@JsonProperty("id")
+	@XmlAttribute(name = "id")
 	private Integer idParte;
-
+	@XmlIDREF
+	@XmlElement(name = "seguroRef")
 	private Seguro seguro;
+	@XmlAttribute
 	private double importe;
 	@JsonSerialize(using= CustomLocalDateSerializer.class)
 	@JsonDeserialize(using= CustomLocalDateDeserializer.class)
+	@XmlAttribute
+	@XmlJavaTypeAdapter(value = LocalDateAdapterXML.class)
 	private LocalDate fecha;
 	
 	public Parte () {

@@ -3,18 +3,25 @@ package es.unican.ss.Practica1.domain;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
 @SuppressWarnings({ "serial" })
 @JsonIdentityInfo( generator= ObjectIdGenerators.PropertyGenerator.class, property= "dni")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType()
 public class Cliente implements Serializable {
-	
+	@XmlAttribute(required = true)
 	private String dni;
+	@XmlAttribute(required = true)
 	private String nombre;
+	@XmlAttribute(required = true)
 	private String email;
+	@XmlElement(name= "seguro", required = true)
 	private List<Seguro> seguros = new LinkedList<Seguro>();
+	@XmlElement(name= "parte")
 	private List<Parte> partes = new LinkedList<Parte>();
 
 	public Cliente() {

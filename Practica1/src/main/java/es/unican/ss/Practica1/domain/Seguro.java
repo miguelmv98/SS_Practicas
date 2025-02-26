@@ -5,7 +5,10 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import es.unican.ss.Practica1.jsonUtils.CustomLocalDateDeserializer;
 import es.unican.ss.Practica1.jsonUtils.CustomLocalDateSerializer;
+import es.unican.ss.Practica1.xmlUtils.LocalDateAdapterXML;
 
+import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -16,16 +19,24 @@ import java.time.LocalDate;
 		@JsonSubTypes.Type(value= TodoRiesgo.class, name= "todoRiesgo"),
 		@JsonSubTypes.Type(value= TRFranquicia.class, name= "franquicia")})
 @JsonIdentityInfo( generator= ObjectIdGenerators.PropertyGenerator.class, property= "id")
+// XML annotations
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name="Seguro")
+@XmlSeeAlso({Terceros.class, TodoRiesgo.class, TRFranquicia.class})
 public abstract class Seguro implements Serializable {
 	
 	public static final double AUMENTO_PROFESIONAL = 100.0;
 	public static final double MULTIPLICADOR_POTENCIA = 1.5;
-	
+	@XmlAttribute( required = true)
+	@XmlID
 	private String id;
 	@JsonSerialize(using= CustomLocalDateSerializer.class)
 	@JsonDeserialize(using= CustomLocalDateDeserializer.class)
 	@JsonProperty("fecha")
+	@XmlAttribute(name ="fecha", required = true)
+	@XmlJavaTypeAdapter(value = LocalDateAdapterXML.class)
 	private LocalDate fechaInicio;
+	@XmlElement()
 	private Vehiculo vehiculo;
 	@JsonIgnore
 	private double precioBase;
