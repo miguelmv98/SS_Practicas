@@ -1,12 +1,16 @@
 package es.unican.ss.Practica3.estimacionesTUS;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType
-public class RespuestaProximosAutobuses
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class ProximosAutobuses
 {
     private int primeroMinutos;
     private int segundoMinutos;
@@ -34,7 +38,7 @@ public class RespuestaProximosAutobuses
     }
 
     public void setPrimeroTexto(String primeroTexto) {
-        this.primeroTexto = primeroTexto;
+        this.primeroTexto = primeroTexto.strip() + " minutes";
     }
 
     public String getSegundoTexto() {
@@ -42,6 +46,7 @@ public class RespuestaProximosAutobuses
     }
 
     public void setSegundoTexto(String segundoTexto) {
-        this.segundoTexto = segundoTexto;
+
+        this.segundoTexto = segundoTexto.strip() + " minutes";
     }
 }

@@ -6,16 +6,19 @@ import jakarta.jws.WebService;
 targetNamespace = "http://www.unican.es/ss/SSEstimacionesTUS")
 public class EstimacionesTUS implements IEstimacionesTUS {
     @Override
-    public RespuestaProximosAutobuses proximosAutobuses(String parada, String linea) throws ParadaNoValidaException, DatosNoDisponiblesException {
+    public ProximosAutobuses proximosAutobuses(String parada, String linea) throws ParadaNoValidaException, DatosNoDisponiblesException {
+
+        ProximosAutobuses output;
 
         int idParada = Utils.getParadaId(parada);
         if(idParada == 0){
             throw new ParadaNoValidaException("No se puede encontrar la parada indicada");
         }else{
-            if(idParada == 1){
+            output = Utils.getProximosAutobuses(idParada,linea);
+            if(output == null){
                 throw new DatosNoDisponiblesException("Acutalmente no existen datos para dicha parada y linea");
             }
         }
-        return null;
+        return output;
     }
 }

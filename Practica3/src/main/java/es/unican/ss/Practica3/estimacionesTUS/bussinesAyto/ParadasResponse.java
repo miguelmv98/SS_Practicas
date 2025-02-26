@@ -1,9 +1,16 @@
 package es.unican.ss.Practica3.estimacionesTUS.bussinesAyto;
 
-import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
-public class ContenedorParadas {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class ParadasResponse {
+
+    @JsonProperty("resources")
+    private List<Parada> paradas;
+
     public List<Parada> getParadas() {
         return paradas;
     }
@@ -12,7 +19,7 @@ public class ContenedorParadas {
         this.paradas = paradas;
     }
 
-    private List<Parada> paradas;
+
 
     public int findParadaId(String parada) {
         for (Parada p: paradas) {
