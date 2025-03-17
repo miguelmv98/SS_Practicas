@@ -1,6 +1,7 @@
 package es.unican.ss.Practica3.estimacionesTUS;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import es.unican.ss.Practica3.estimacionesTUS.bussines.ProximosAutobuses;
 import es.unican.ss.Practica3.estimacionesTUS.bussinesAyto.LineaParadaStatus;
 import es.unican.ss.Practica3.estimacionesTUS.bussinesAyto.LineasParadaResponse;
 import es.unican.ss.Practica3.estimacionesTUS.bussinesAyto.ParadasResponse;
@@ -14,7 +15,7 @@ import java.net.URL;
 
 public class Utils {
 
-    public static int getParadaId(String parada) {
+    public static int getParadaId(String parada) throws DatosNoDisponiblesException, ParadaNoValidaException  {
         int output = 0;
         ParadasResponse contenedor = null;
         try {
@@ -24,7 +25,7 @@ public class Utils {
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Accept", "application/xml");
             if (conn.getResponseCode() != 200) {
-                System.out.println("Failed : HTTP error code : " + conn.getResponseCode());
+                throw new DatosNoDisponiblesException("Actualmente no se encuentran disponibles los datos solicitados");
             } else {
                 InputStream response = conn.getInputStream();
                 ObjectMapper mapper = new ObjectMapper();
@@ -38,10 +39,13 @@ public class Utils {
         if( contenedor!= null){
             output = contenedor.findParadaId(parada);
         }
+        if(output == 0){
+            throw new ParadaNoValidaException("Parada no valida");
+        }
         return output;
     }
 
-    public static ProximosAutobuses getProximosAutobuses(int idParada, String linea) {
+    public static ProximosAutobuses getProximosAutobuses(int idParada, String linea) throws DatosNoDisponiblesException, ParadaNoValidaException {
         ProximosAutobuses output = null;
         LineasParadaResponse contenedor = null;
         try {
@@ -51,7 +55,7 @@ public class Utils {
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Accept", "application/xml");
             if (conn.getResponseCode() != 200) {
-                System.out.println("Failed : HTTP error code : " + conn.getResponseCode());
+                throw new DatosNoDisponiblesException("Actualmente no se encuentran disponibles los datos solicitados");
             } else {
                 InputStream response = conn.getInputStream();
                 ObjectMapper mapper = new ObjectMapper();
@@ -62,12 +66,15 @@ public class Utils {
             e.printStackTrace();
         }
         if( contenedor!= null){
-            output= convertToPRoximosAutobuses(contenedor.findLineaStatusByLinea(linea));
+            output= convertToProximosAutobuses(contenedor.findLineaStatusByLinea(linea));
+        }
+        if(output == null){
+            throw new ParadaNoValidaException("Linea no valida");
         }
         return output;
     }
 
-    private static ProximosAutobuses convertToPRoximosAutobuses(LineaParadaStatus lineaStatus) {
+    private static ProximosAutobuses convertToProximosAutobuses(LineaParadaStatus lineaStatus) {
         ProximosAutobuses output = null;
         if(lineaStatus!=null){
             output= new ProximosAutobuses();

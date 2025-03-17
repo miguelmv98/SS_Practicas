@@ -1,15 +1,11 @@
-package es.unican.ss.Practica3.estimacionesTUS;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+package es.unican.ss.Practica3.estimacionesTUS.bussines;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType
-@JsonIgnoreProperties(ignoreUnknown = true)
+@XmlType()
 public class ProximosAutobuses
 {
     private int primeroMinutos;

@@ -47,28 +47,6 @@
 
     <build>
         <finalName>SSEstimacionesTUS</finalName>
-        <plugins>
-<!--            <plugin>-->
-<!--                <groupId>com.sun.xml.ws</groupId>-->
-<!--                <artifactId>jaxws-maven-plugin</artifactId>-->
-<!--                <version>3.0.0</version>-->
-<!--                <configuration>-->
-<!--                    <genWsdl>true</genWsdl>-->
-<!--                    <inlineSchemas>true</inlineSchemas>-->
-<!--                    <resourceDestDir>src/main/resources</resourceDestDir>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-            <plugin>
-                <groupId>com.sun.xml.ws</groupId>
-                <artifactId>jaxws-maven-plugin</artifactId>
-                <version>3.0.0</version>
-                <configuration>
-                    <packageName>es.unican.ss.Practica3.estimacionesTUS.numberToWords</packageName>
-                    <sourceDestDir>src/main/java/</sourceDestDir>
-                    <wsdlUrls>https://www.dataaccess.com/webservicesserver/NumberConversion.wso?WSDL</wsdlUrls>
-                </configuration>
-            </plugin>
-        </plugins>
     </build>
 
 </project>
