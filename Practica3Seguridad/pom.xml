@@ -5,10 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>es.unican.ss</groupId>
-    <artifactId>Practica3</artifactId>
+    <artifactId>Practica3Seguridad</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -46,7 +45,19 @@
     </dependencies>
 
     <build>
-        <finalName>SSEstimacionesTUS</finalName>
-    </build>
+        <finalName>SSEstimacionesTUSSeguridad</finalName>
+        <plugins>
+            <plugin>
+                <groupId>com.sun.xml.ws</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <genWsdl>true</genWsdl>
+                    <inlineSchemas>true</inlineSchemas>
+                    <resourceDestDir>src/main/resources</resourceDestDir>
+                </configuration>
+            </plugin>
+        </plugins>
 
+    </build>
 </project>

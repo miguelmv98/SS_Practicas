@@ -4,17 +4,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>es.unican.ss</groupId>
-    <artifactId>Practica3</artifactId>
+    <groupId>es.unican.ps</groupId>
+    <artifactId>Practica3Client</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
-
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
 
     <dependencies>
         <dependency>
@@ -28,25 +27,24 @@
             <version>2.3.3</version>
         </dependency>
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.14.2</version>
-        </dependency>
-        <dependency>
             <groupId>org.glassfish.metro</groupId>
             <artifactId>webservices-rt</artifactId>
             <version>4.0.0-M3</version>
         </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>RELEASE</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
-
     <build>
-        <finalName>SSEstimacionesTUS</finalName>
+        <plugins>
+            <plugin>
+                <groupId>com.sun.xml.ws</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <packageName>es.unican.ss.EstimacionesTUSClient</packageName>
+                    <sourceDestDir>src/main/java/</sourceDestDir>
+                    <wsdlUrls>http://localhost:8080/SSEstimacionesTUS?wsdl</wsdlUrls>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
 </project>
